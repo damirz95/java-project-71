@@ -7,6 +7,7 @@
 plugins {
     application
     id("com.github.ben-manes.versions") version "0.51.0"
+    checkstyle
 }
 application{ mainClass.set("hexlet.code.App") }
 repositories { mavenCentral() }
@@ -16,4 +17,12 @@ dependencies {
     annotationProcessor("info.picocli:picocli-codegen:4.7.5")
     implementation("org.apache.commons:commons-lang3:3.14.0")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.16.1")
+}
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(20))
+    }
+}
+tasks.getByName("run", JavaExec::class) {
+    standardInput = System.`in`
 }
