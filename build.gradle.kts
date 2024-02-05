@@ -26,6 +26,13 @@ dependencies {
 }
 tasks.named<Test>("test") {
     useJUnitPlatform()
+    testLogging {
+        exceptionFormat = TestExceptionFormat.FULL
+        events = mutableSetOf(TestLogEvent.FAILED, TestLogEvent.PASSED, TestLogEvent.SKIPPED)
+        //showStackTraces = true
+        // showCauses = true
+        showStandardStreams = true
+    }
 }
 tasks.test {
     finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
