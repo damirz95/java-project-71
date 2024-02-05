@@ -27,7 +27,10 @@ dependencies {
 tasks.named<Test>("test") {
     useJUnitPlatform()
 }
-
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+}
+tasks.jacocoTestReport { reports { xml.required.set(true) } }
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(20))
@@ -37,4 +40,3 @@ tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
 }
 
-tasks.jacocoTestReport { reports { xml.required.set(true) } }
