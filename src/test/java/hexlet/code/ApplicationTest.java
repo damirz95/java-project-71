@@ -9,8 +9,8 @@ import java.util.List;
 public class ApplicationTest {
     @Test
     public void testOne() throws Exception {
-        String testPathOne = "/home/damir/java-project-71/java-project-71/src/test/resources/file1.json";
-        String testPathTwo = "/home/damir/java-project-71/java-project-71/src/test/resources/file2.json";
+        String testPathOne = "src/test/resources/file1.json";
+        String testPathTwo = "src/test/resources/file2.json";
         String format = "";
         List<String> expected = new ArrayList<>();
         expected.add("- follow: false");
