@@ -1,0 +1,22 @@
+{
+  "status": "active",
+  "name": {
+    "first": "Lucienne",
+    "middle": "Kennedy",
+    "last": "Olson"
+  },
+  "username": "Lucienne-Olson",
+  "password": "vfZn4rMelFQliC2",
+  "phoneNumber": "(968) 679-9014 x4031",
+  "location": {
+    "street": "66980 Blick Isle",
+    "city": "Downers Grove",
+    "state": "New Jersey",
+    "country": "Timor-Leste",
+    "zip": "37105-9547",
+    "coordinates": {
+      "latitude": -87.0202,
+      "longitude": 28.9581
+    }
+  }
+}

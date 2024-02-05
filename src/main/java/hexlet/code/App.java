@@ -25,6 +25,5 @@ public final class App implements Callable {
     }
     public static void main(String[] args) {
         new CommandLine(new App()).execute(args);
-
     }
 }
