@@ -23,10 +23,4 @@ public class ApplicationTest {
         System.out.println(actual);
         assertEquals(expected.toString(), actual);
     }
-    @Test
-    public void testTwo() throws Exception {
-        String testPathOne = "/home/damir/java-project-71/java-project-71/src/test/resources/file1.json";
-        String testPathTwo = "/home/damir/java-project-71/java-project-71/src/test/resources/file2.json";
-        String format = "";
-    }
 }
