@@ -1,7 +1,7 @@
 package hexlet.code;
 
-import java.util.ArrayList;
-import java.util.List;
+/*import java.util.ArrayList;
+import java.util.List;*/
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
@@ -9,24 +9,24 @@ import java.util.TreeSet;
 
 public class DifferBuilder {
     public static String differ(Map<String, Object> dataOne, Map<String, Object> dataTwo) {
-        List<String> result = new ArrayList<>();
+        StringBuilder result = new StringBuilder();
         Set<String> keys = new TreeSet<>(dataOne.keySet());
         keys.addAll(dataTwo.keySet());
         System.out.println(keys);
         for (String key: keys) {
             if (Objects.equals(dataOne.get(key), dataTwo.get(key))) {
                 //Unmodified
-                result.add(" " + key + ": " + dataOne.get(key));
+                result.append("  ").append(key).append(": ").append(dataOne.get(key)).append("\n");
             } else if (!dataOne.containsKey(key)) {
                 //Add data
-                result.add("+ " + key + ": " + dataTwo.get(key));
+                result.append("+ ").append(key).append(": ").append(dataTwo.get(key)).append("\n");
             } else if (!dataTwo.containsKey(key)) {
                 //Del
-                result.add("- " + key + ": " + dataOne.get(key));
+                result.append("- ").append(key).append(": ").append(dataOne.get(key)).append("\n");
             } else if (!Objects.equals(dataOne.get(key), dataTwo.get(key))) {
                 //Update
-                result.add("- " + key + ": " + dataOne.get(key));
-                result.add("+ " + key + ": " + dataTwo.get(key));
+                result.append("- ").append(key).append(": ").append(dataOne.get(key)).append("\n");
+                result.append("+ ").append(key).append(": ").append(dataTwo.get(key)).append("\n");
             }
         }
         /*dataOne.forEach((key, value) -> {
