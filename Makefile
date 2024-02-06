@@ -1,11 +1,13 @@
 .DEFAULT_GOAL := build-run
 build:
-	gradle installDist
+	make -C app build
 run:
-	./build/install/app/bin/app
+	make -C app run
 test:
-	./gradlew test
+	make -C app test
 lint:
-	./gradlew checkstyleMain
+	make -C app lint
+report:
+	make -C app report
 build-run: build run
 .PHONY: build
