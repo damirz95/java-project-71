@@ -12,7 +12,8 @@ public class Differ {
         //2 pars data -> Map
         //3 нахождение разниц
         //4 Форматирование разницы в нужный формат(format)
-        return DifferBuilder.differ(getData(path1), getData(path2));
+        Map<String, Status> result =  DifferBuilder.differ(getData(path1), getData(path2));
+        return Formatter.getFormattedText(result, format);
     }
 
     public static Map getData(String path) throws Exception {

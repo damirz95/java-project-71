@@ -3,22 +3,19 @@ package hexlet.code;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ApplicationTest {
     @Test
     public void testOne() throws Exception {
         String testPathOne = "src/test/resources/file1.json";
         String testPathTwo = "src/test/resources/file2.json";
         String format = "";
-        List<String> expected = new ArrayList<>();
-        expected.add("- follow: false");
-        expected.add(" host: hexlet.io");
-        expected.add("- proxy: 123.234.53.22");
-        expected.add("- timeout: 50");
-        expected.add("+ timeout: 20");
-        expected.add("+ verbose: true");
+        StringBuilder expected = new StringBuilder();
+        expected.append("- follow: false\n");
+        expected.append("  host: hexlet.io\n");
+        expected.append("- proxy: 123.234.53.22\n");
+        expected.append("- timeout: 50\n");
+        expected.append("+ timeout: 20\n");
+        expected.append("+ verbose: true\n");
         var actual = Differ.generate(testPathOne, testPathTwo, format);
         System.out.println(actual);
         assertEquals(expected.toString(), actual);
@@ -28,13 +25,13 @@ public class ApplicationTest {
         String testPathOne = "src/test/resources/file3.yml";
         String testPathTwo = "src/test/resources/file2.json";
         String format = "";
-        List<String> expected = new ArrayList<>();
-        expected.add("- follow: false");
-        expected.add(" host: hexlet.io");
-        expected.add("- proxy: 123.234.53.22");
-        expected.add("- timeout: 50");
-        expected.add("+ timeout: 20");
-        expected.add("+ verbose: true");
+        StringBuilder expected = new StringBuilder();
+        expected.append("- follow: false\n");
+        expected.append("  host: hexlet.io\n");
+        expected.append("- proxy: 123.234.53.22\n");
+        expected.append("- timeout: 50\n");
+        expected.append("+ timeout: 20\n");
+        expected.append("+ verbose: true\n");
         var actual = Differ.generate(testPathOne, testPathTwo, format);
         System.out.println(actual);
         assertEquals(expected.toString(), actual);

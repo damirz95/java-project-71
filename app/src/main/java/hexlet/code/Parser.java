@@ -14,7 +14,7 @@ public class Parser {
             ObjectMapper objectMapper = new ObjectMapper(new YAMLFactory());
             return  objectMapper.readValue(content, Map.class);
         } else {
-            throw new Exception("Unknown data format: " + format) ;
+            throw new Exception("Unknown data format: " + format);
         }
     }
 }
