@@ -1,30 +1,36 @@
 package hexlet.code.formatters;
 
 import hexlet.code.Status;
-
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class Stylish {
     public static String getStylishFormat(Map<String, Status> data) {
         StringBuilder result = new StringBuilder();
-        Set<String> keys = new TreeSet<>(data.keySet());
+        Set<String> keys = data.keySet();
         for (String key: keys) {
-            if (data.get(key).getStatus().equals("unmodified")) {
-                result.append("  ");
-                result.append(key).append(": ").append(data.get(key).getValue1()).append("\n");
-            } else if (data.get(key).getStatus().equals("deleted")) {
-                result.append("- ");
-                result.append(key).append(": ").append(data.get(key).getValue1()).append("\n");
-            } else if (data.get(key).getStatus().equals("added")) {
-                result.append("+ ");
-                result.append(key).append(": ").append(data.get(key).getValue2()).append("\n");
-            } else if (data.get(key).getStatus().equals("updated")) {
-                result.append("- ");
-                result.append(key).append(": ").append(data.get(key).getValue1()).append("\n");
-                result.append("+ ");
-                result.append(key).append(": ").append(data.get(key).getValue2()).append("\n");
+            String status = data.get(key).getStatus();
+            switch (status) {
+                case "unmodified":
+                    result.append("  ");
+                    result.append(key).append(": ").append(data.get(key).getValue1()).append("\n");
+                    break;
+                case "deleted":
+                    result.append("- ");
+                    result.append(key).append(": ").append(data.get(key).getValue1()).append("\n");
+                    break;
+                case "added":
+                    result.append("+ ");
+                    result.append(key).append(": ").append(data.get(key).getValue2()).append("\n");
+                    break;
+                case "updated":
+                    result.append("- ");
+                    result.append(key).append(": ").append(data.get(key).getValue1()).append("\n");
+                    result.append("+ ");
+                    result.append(key).append(": ").append(data.get(key).getValue2()).append("\n");
+                    break;
+                default:
+                    throw new RuntimeException("unknown status: " + status);
             }
         }
         return result.toString();

@@ -11,7 +11,6 @@ public class DifferBuilder {
         Map<String, Status> result = new LinkedHashMap<>();
         Set<String> keys = new TreeSet<>(dataOne.keySet());
         keys.addAll(dataTwo.keySet());
-        System.out.println(keys);
         for (String key: keys) {
             if (Objects.equals(dataOne.get(key), dataTwo.get(key))) {
                 result.put(key, new Status("unmodified", dataOne.get(key), dataTwo.get(key)));

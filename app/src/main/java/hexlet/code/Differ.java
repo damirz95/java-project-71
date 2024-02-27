@@ -7,13 +7,11 @@ import java.util.Map;
 
 public class Differ {
     public static String generate(String path1, String path2, String format) throws Exception {
-        //Pipe line
-        //1 read file
-        //2 pars data -> Map
-        //3 нахождение разниц
-        //4 Форматирование разницы в нужный формат(format)
         Map<String, Status> result =  DifferBuilder.differ(getData(path1), getData(path2));
-        return Formatter.getFormattedText(result, format);
+        return Formatter.format(result, format);
+    }
+    public static String generate(String path1, String path2) throws Exception {
+        return generate(path1,  path2, "stylish");
     }
 
     public static Map getData(String path) throws Exception {

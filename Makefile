@@ -1,6 +1,8 @@
 .DEFAULT_GOAL := build-run
 build:
 	make -C app build
+install:
+	make -C app install
 run:
 	make -C app run
 test:

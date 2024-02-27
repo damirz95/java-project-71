@@ -1,28 +1,48 @@
 package hexlet.code.formatters;
 
 import hexlet.code.Status;
-
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class Plain {
     public static String getPlainFormat(Map<String, Status> data) {
         StringBuilder result = new StringBuilder();
-        Set<String> keys = new TreeSet<>(data.keySet());
+        Set<String> keys = data.keySet();
         for (String key: keys) {
-            if (data.get(key).getStatus().equals("deleted")) {
-                result.append("Property '");
-                result.append(key).append("' was removed").append("\n");
-            } else if (data.get(key).getStatus().equals("added")) {
-                result.append("Property '");
-                result.append(key).append("' was added with value: '").append(data.get(key).getValue2()).append("'\n");
-            } else if (data.get(key).getStatus().equals("updated")) {
-                result.append("Property '");
-                result.append(key).append("' was updated. From '").append(data.get(key).getValue1()).append("' to '");
-                result.append(data.get(key).getValue2()).append("'\n");
+            String status = data.get(key).getStatus();
+            switch (status) {
+                case "deleted":
+                    result.append("Property '");
+                    result.append(key).append("' was removed").append("\n");
+                    break;
+                case "added":
+                    result.append("Property '");
+                    result.append(key).append("' was added with value: ").append(isComplex(data.get(key).getValue2()));
+                    result.append("\n");
+                    break;
+                case "updated":
+                    result.append("Property '");
+                    result.append(key).append("' was updated. From ").append(isComplex(data.get(key).getValue1()));
+                    result.append(" to ").append(isComplex(data.get(key).getValue2())).append("\n");
+                    break;
+                case "unmodified":
+                    break;
+                default:
+                    throw new RuntimeException("unknown status: " + status);
             }
         }
         return result.toString();
+    }
+    public static String isComplex(Object value) {
+        if (value == null) {
+            return "null";
+        } else if (value instanceof List || value instanceof Map) {
+            return "[complex value]";
+        } else if (value instanceof String) {
+            return "'" + value + "'";
+        } else {
+            return value.toString();
+        }
     }
 }
