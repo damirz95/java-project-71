@@ -5,7 +5,7 @@
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/app" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../.asdf/installs/gradle/8.5" />
+        <option name="gradleHome" value="/home/damir/.asdf/installs/gradle/8.5" />
         <option name="gradleJvm" value="20 (WSL)" />
         <option name="modules">
           <set>
