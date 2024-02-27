@@ -34,6 +34,9 @@ tasks.named<Test>("test") {
         showStandardStreams = true
     }
 }
+tasks.test {
+    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+}
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(20))
