@@ -20,17 +20,4 @@ public class Status {
     public Object getValue2() {
         return value2;
     }
-
-    @Override
-    public String toString() {
-        return "Status{"
-                +
-                "status='" + status + '\''
-                +
-                ", value1=" + value1
-                +
-                ", value2=" + value2
-                +
-                '}';
-    }
 }

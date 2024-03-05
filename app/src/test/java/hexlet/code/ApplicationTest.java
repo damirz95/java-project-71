@@ -43,7 +43,7 @@ public class ApplicationTest {
         System.out.println(resultStylish);
         System.out.println("actual");
         System.out.println(actual);
-        assertEquals(resultStylish, actual);
+        assertEquals(actual, resultStylish);
     }
     @Test
     public void testThreePlain() throws Exception {
