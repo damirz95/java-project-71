@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1557370a-3c00-4aaa-abfa-bfe4af4a7c8b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/hexlet/code/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/hexlet/code/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/hexlet/code/ApplicationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/java/hexlet/code/ApplicationTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/resources/fixtures/resultStylish.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/test/resources/fixtures/resultStylish.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

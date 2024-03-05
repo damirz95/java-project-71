@@ -6,14 +6,11 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class ApplicationTest {
-    //TODO yml, json -> plain,stylish,json, defoult;
     public static String readFixture(String fileName) throws IOException {
         return  Files.readString(Paths.get(fileName)).trim();
     }

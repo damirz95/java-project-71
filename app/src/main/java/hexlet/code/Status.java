@@ -1,5 +1,5 @@
 package hexlet.code;
-public class Status {
+public final class Status {
     /*Format to data*/
     private final String status;
     private final Object value1;
