@@ -32,7 +32,7 @@ public class Plain {
                     throw new RuntimeException("unknown status: " + status);
             }
         }
-        return result.toString();
+        return result.toString().trim();
     }
     public static String isComplex(Object value) {
         if (value == null) {
