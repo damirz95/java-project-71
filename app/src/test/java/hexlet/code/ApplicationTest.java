@@ -6,8 +6,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 
+import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class ApplicationTest {
@@ -31,7 +33,6 @@ public class ApplicationTest {
         String testPathOne = "src/test/resources/fixtures/file1.json";
         String testPathTwo = "src/test/resources/fixtures/file2.json";
         var actual = Differ.generate(testPathOne, testPathTwo, "json");
-        System.out.println(actual);
         assertEquals(resultJson, actual);
     }
     @Test
@@ -39,10 +40,6 @@ public class ApplicationTest {
         String testPathOne = "src/test/resources/fixtures/file1.json";
         String testPathTwo = "src/test/resources/fixtures/file2.json";
         var actual = Differ.generate(testPathOne, testPathTwo, "stylish");
-        System.out.println("result");
-        System.out.println(resultStylish);
-        System.out.println("actual");
-        System.out.println(actual);
         assertEquals(actual, resultStylish);
     }
     @Test
@@ -50,7 +47,6 @@ public class ApplicationTest {
         String testPathOne = "src/test/resources/fixtures/file1.json";
         String testPathTwo = "src/test/resources/fixtures/file2.json";
         var actual = Differ.generate(testPathOne, testPathTwo, "plain");
-        System.out.println(actual);
         assertEquals(resultPlain, actual);
     }
     @Test
@@ -58,7 +54,6 @@ public class ApplicationTest {
         String testPathOne = "src/test/resources/fixtures/file1.json";
         String testPathTwo = "src/test/resources/fixtures/file2.json";
         var actual = Differ.generate(testPathOne, testPathTwo);
-        System.out.println(actual);
         assertEquals(resultStylish, actual);
     }
     @Test
@@ -66,7 +61,6 @@ public class ApplicationTest {
         String testPathOne = "src/test/resources/fixtures/file3.yml";
         String testPathTwo = "src/test/resources/fixtures/file4.yml";
         var actual = Differ.generate(testPathOne, testPathTwo, "json");
-        System.out.println(actual);
         assertEquals(resultJson, actual);
     }
     @Test
@@ -74,7 +68,6 @@ public class ApplicationTest {
         String testPathOne = "src/test/resources/fixtures/file3.yml";
         String testPathTwo = "src/test/resources/fixtures/file4.yml";
         var actual = Differ.generate(testPathOne, testPathTwo, "plain");
-        System.out.println(actual);
         assertEquals(resultPlain, actual);
     }
     @Test
@@ -82,7 +75,6 @@ public class ApplicationTest {
         String testPathOne = "src/test/resources/fixtures/file3.yml";
         String testPathTwo = "src/test/resources/fixtures/file4.yml";
         var actual = Differ.generate(testPathOne, testPathTwo, "stylish");
-        System.out.println(actual);
         assertEquals(resultStylish, actual);
     }
     @Test
@@ -90,7 +82,6 @@ public class ApplicationTest {
         String testPathOne = "src/test/resources/fixtures/file3.yml";
         String testPathTwo = "src/test/resources/fixtures/file4.yml";
         var actual = Differ.generate(testPathOne, testPathTwo);
-        System.out.println(actual);
         assertEquals(resultStylish, actual);
     }
 }

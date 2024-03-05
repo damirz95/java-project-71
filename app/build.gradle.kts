@@ -17,7 +17,7 @@ application { mainClass.set("hexlet.code.App") }
 
 dependencies {
     implementation("info.picocli:picocli:4.6.1")
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.16.1")
     implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.0")
 
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.10.1")
@@ -41,7 +41,7 @@ tasks.test {
     testLogging {
         exceptionFormat = TestExceptionFormat.FULL
         events = mutableSetOf(TestLogEvent.FAILED, TestLogEvent.PASSED, TestLogEvent.SKIPPED)
-        // showStackTraces = true
+        showStackTraces = true
         // showCauses = true
         showStandardStreams = true
     }
