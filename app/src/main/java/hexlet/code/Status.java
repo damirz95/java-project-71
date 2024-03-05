@@ -1,8 +1,8 @@
 package hexlet.code;
 public class Status {
-    String status;
-    Object value1;
-    Object value2;
+    private String status;
+    private Object value1;
+    private Object value2;
     public Status(String status, Object value1, Object value2) {
         this.status = status;
         this.value1 = value1;
@@ -19,6 +19,18 @@ public class Status {
 
     public Object getValue2() {
         return value2;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setValue1(Object value1) {
+        this.value1 = value1;
+    }
+
+    public void setValue2(Object value2) {
+        this.value2 = value2;
     }
 
     @Override
