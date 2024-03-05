@@ -1,9 +1,11 @@
 package hexlet.code;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.skyscreamer.jsonassert.JSONAssert;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,60 +27,23 @@ public class ApplicationTest {
         resultPlain = readFixture("src/test/resources/fixtures/resultPlain.txt");
         resultStylish = readFixture("src/test/resources/fixtures/resultStylish.txt");
     }
-    @Test
-    public void testOneJson() throws Exception {
-        String testPathOne = "src/test/resources/fixtures/file1.json";
-        String testPathTwo = "src/test/resources/fixtures/file2.json";
-        var actual = Differ.generate(testPathOne, testPathTwo, "json");
-        assertEquals(resultJson, actual);
-    }
-    @Test
-    public void testTwoStylish() throws Exception {
-        String testPathOne = "src/test/resources/fixtures/file1.json";
-        String testPathTwo = "src/test/resources/fixtures/file2.json";
-        var actual = Differ.generate(testPathOne, testPathTwo, "stylish");
-        assertEquals(actual, resultStylish);
-    }
-    @Test
-    public void testThreePlain() throws Exception {
-        String testPathOne = "src/test/resources/fixtures/file1.json";
-        String testPathTwo = "src/test/resources/fixtures/file2.json";
-        var actual = Differ.generate(testPathOne, testPathTwo, "plain");
-        assertEquals(resultPlain, actual);
-    }
-    @Test
-    public void testFourDefault() throws Exception {
-        String testPathOne = "src/test/resources/fixtures/file1.json";
-        String testPathTwo = "src/test/resources/fixtures/file2.json";
-        var actual = Differ.generate(testPathOne, testPathTwo);
-        assertEquals(resultStylish, actual);
-    }
-    @Test
-    public void testFiveYamlJson() throws Exception {
-        String testPathOne = "src/test/resources/fixtures/file3.yml";
-        String testPathTwo = "src/test/resources/fixtures/file4.yml";
-        var actual = Differ.generate(testPathOne, testPathTwo, "json");
-        assertEquals(resultJson, actual);
-    }
-    @Test
-    public void testSixYamlPlain() throws Exception {
-        String testPathOne = "src/test/resources/fixtures/file3.yml";
-        String testPathTwo = "src/test/resources/fixtures/file4.yml";
-        var actual = Differ.generate(testPathOne, testPathTwo, "plain");
-        assertEquals(resultPlain, actual);
-    }
-    @Test
-    public void testSevenYamlStylish() throws Exception {
-        String testPathOne = "src/test/resources/fixtures/file3.yml";
-        String testPathTwo = "src/test/resources/fixtures/file4.yml";
-        var actual = Differ.generate(testPathOne, testPathTwo, "stylish");
-        assertEquals(resultStylish, actual);
-    }
-    @Test
-    public void testEightYamlDefault() throws Exception {
-        String testPathOne = "src/test/resources/fixtures/file3.yml";
-        String testPathTwo = "src/test/resources/fixtures/file4.yml";
-        var actual = Differ.generate(testPathOne, testPathTwo);
-        assertEquals(resultStylish, actual);
+    @ParameterizedTest
+    @ValueSource(strings = {"json", "yml"})
+    public void generateTest(String format) throws Exception {
+        String filePath1 = "src/test/resources/fixtures/file1." + format;
+        String filePath2 = "src/test/resources/fixtures/file2." + format;
+
+        // Тестируем вызов метода с каждым из фоматерров, а также вызов с форматером по умолчанию
+        assertThat(Differ.generate(filePath1, filePath2))
+                .isEqualTo(resultStylish);
+
+        assertThat(Differ.generate(filePath1, filePath2, "stylish"))
+                .isEqualTo(resultStylish);
+
+        assertThat(Differ.generate(filePath1, filePath2, "plain"))
+                .isEqualTo(resultPlain);
+
+        String actualJson = Differ.generate(filePath1, filePath2, "json");
+        JSONAssert.assertEquals(resultJson, actualJson, false);
     }
 }
